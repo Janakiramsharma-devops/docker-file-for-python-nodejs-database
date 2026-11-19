@@ -1,5 +1,9 @@
 FROM nginx
-COPY index.html /usr/local/apache2/htdocs/ (create a index.html in your server)
+EXPOSE 80
 LABLE sample dockerfile for python
 MAINTAINER Janakiram
+COPY index.html /usr/local/apache2/htdocs/ (create a index.html in your server)
 
+
+NOW BILD THIS DOOCEKR FILE
+Command: docker build -t imagename:v1 .
