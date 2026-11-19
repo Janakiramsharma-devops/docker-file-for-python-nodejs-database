@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx or httpd
 EXPOSE 80
 LABLE sample dockerfile for python
 MAINTAINER Janakiram
