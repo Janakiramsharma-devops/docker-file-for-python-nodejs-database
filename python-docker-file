@@ -3,7 +3,19 @@ EXPOSE 80
 LABLE sample dockerfile for python
 MAINTAINER Janakiram
 COPY index.html /usr/local/apache2/htdocs/ (create a index.html in your server)
-
+================================================================================================================
 
 NOW BILD THIS DOOCEKR FILE
-Command: docker build -t imagename:v1 .
+Command: docker build -t imagename:tag dirctoryname
+------> docker bild -t image1:v1 .
+Image will get create 
+
+NOW CREATE CONTAINER USING THE CREATED IMAGE
+Commnd: docker run -itd --name containername -p host-port:container-port imagename:tag
+-------> docker run -itd --name cont1 -p 1111:80 image1:v1
+Container will get create
+
+Use "docker ps" to check the container is running or not
+
+
+NOW ACCESS THE APPLICTON WITH YOUR SERVER IP WITH HOST PORT(1111).
