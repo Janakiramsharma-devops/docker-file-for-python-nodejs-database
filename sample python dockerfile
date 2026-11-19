@@ -1,1 +1,28 @@
+//FIRST GET THE SOURCE CODE FROM GIT AND INSTALL PYTHON MANUALLY IN YOUR SERVER TO GET THE REQUIREMENT.TXT FLILE
+//INITIALLY PYTHON IS INSTALLED IN YOUR EC2 INSTANCE. INSTALL ONLY PIP TO GET THE REQ.TXT
 
+CLONE THE GIT URL USING:>>>>>>> git clone url
+NOW WE HAVE THE PYTHON CODE
+
+COMMAND TO INSTALL PIP:>>>>>>>>> yum install python-pip -y
+NOW INSTALL DEPENDECIES FROM REQ.TXT:>>>>>>> pip install -r requirments.txt
+=====================================================================================================================================================
+
+DOCKER-FILE:
+
+FROM python
+WORKDIR /myapp
+COPY req.txt .
+RUN pip install -r req.txt
+COPY . .  //GETTING APP.PY AND OTHER REQUIRED FILES
+CMD ["python","app.py"]
+
+NOW BUILD THIS DOCKER IMAGE. 
+---------> docker build -t python-image:v1
+TO CHECK IMAGE USE:>>>>> docker images
+
+NOW RUN THE IMAGE TO CREATE THE CONTAINER
+---------> docker ru -itd --name python-cont -p 1122:8000 python-image:v1
+TO CHECK THE CREATED CONTAINER IS RUNNING OR NOT USE:>>>> doocker ps
+
+NOW ACCESS THE APPLICATION WITH YOUR IP WITH HOST PORT 1122.
