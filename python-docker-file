@@ -1,1 +1,5 @@
-FROM 
+FROM nginx
+COPY index.html /usr/local/apache2/htdocs/ (create a index.html in your server)
+LABLE sample dockerfile for python
+MAINTAINER Janakiram
+
