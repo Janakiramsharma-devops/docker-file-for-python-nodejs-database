@@ -1,2 +1,22 @@
 PYTHON DOCKER FILE AND NODEJS DOCKER FILE IS MOSTLY SIMILAR.
 
+FROM node
+WORKDIR /myapp
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000       //GIVE THE PORT BASED ON OUR APPLICATION WHAT YOUR MENTONED
+CMD ["npm","src/server.js"] (here give the path where the source code. Here the js file in src that's why I gave src/server.js. EXAMPLE IF YOU HAVE THE JS FILE IN ROOR DIRCTORY THEN FIVE ONLY SERVER.JS OR INDEX.JS BASED ON YOUR FILE NAME)
+
+
+NOW BUILD THE IMAGE AND CREATE THE CONTAINER TO ACCES THE APPLICATION
+
+BUILD IMAGE: dokcer build -t nodejs-image:v1 .
+CREATE CONTAINER: docker run -itd --name nodejs-cont -p 1133:3000 nodejs-image:v1
+
+====================================================================================================================================================================
+<<<<<<<<<<<<<<<<<<<<<<<<<<<  NOTE:-- SUPPOSE WHEN EVER THE CONTAINER WENT TO EXITED STATE THAT CHECK THE LOGS TO FIND THE ISSUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+LOGS COMMAND: docker logs container-name
+              dokcer logs nodejs-cont
+====================================================================================================================================================================
