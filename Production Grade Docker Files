@@ -1,0 +1,15 @@
+|*************** GOLDEN RULES TO WRITE THE DOKCERFILE ****************|
+|          1. Use supported base images                               |
+|          2. Prefer Alpine/distroless/slim where appropriate         |
+|          3. Use multi-stage builds                                  |
+|          4. Don't run as root                                       |
+|          5. Don't store secrets in Dockerfile                       |
+|          6. Use .dockerignore                                       |
+|          7. Pin application dependencies                            |
+|          8. Don't install unnecessary packages                      |
+|          9. Don't use latest in production                          |
+|          10. Scan image with "Trivy"                                |
+```````````````````````````````````````````````````````````````````````
+
+
+
