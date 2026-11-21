@@ -11,7 +11,6 @@
 |          10. Scan image with "Trivy"                                |
 ```````````````````````````````````````````````````````````````````````
 
-
 PRODUCTION DOCKER FILE FOR NGINX:
 `````````````````````````````````
 FROM nginx:alpine
@@ -23,6 +22,12 @@ RUN chnown -R janakiram:janakiram /usr/local/nginx/html
 USER janakiram
 CMD ["nginx", "-g", "daemon off;"]
 
+NOW BUILD THE NGINX IMAGE AND SCAN IT WITH TRIVY
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+TO REDUCE THE IMAGE SIZE WE ARE USING ALPINE/DISTROLESS/SLIM. SOME TIMES WE MENTION VERSION NUMBER INFRONT OF ALPINE/DISTROLESS/SLIM TO FIND THAT VERSION ASK WITH DEVELOPER THAT WHICH VERSION OF APPLICATION THEY ARE
+WORKING ON AND ALSO WE CAN CHECK THE VERSION IS AVAILABLE IN HUB.DOKCKER.COM LIKE FOR SUPPOSE HTTPD DOES HAVE 2.4 VERSION OR NOT, DOES NODEJS HAVE 22-APLINE OR NOT. IN THIS WAY WE CAN CHECK
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 PRODUCTION DOCKER FILE FOR HTTPD:
 `````````````````````````````````
@@ -30,7 +35,31 @@ FROM httpd:2.4-apline
 RUN rm -rf /usr/local/apache2/conf/httpd.conf/*
 COPY index.html /usr/local/apache2/conf/httpd.conf    //g\FIRST GET THE INDEX.HTML FILE INTO YOUR SERVER BEFORE WRITING THE DOCKER FILE
 EXPOSE 80
-RUN chown -R janakiram:janakiram /usr/local/apache2/conf/httpd.conf
 RUN adduser -D janakiram
+RUN chown -R janakiram:janakiram /usr/local/apache2/conf/httpd.conf
+USER janakiram
 CMD ["httpd-foreground"]
+
+NOW BUILD THE HTTPD IMAGE AND SCAN IT WITH TRIVY
+
+============================================================================================================================================================================================
+============================================================================================================================================================================================
+============================================================================================================================================================================================
+
+******************HOW TO USE TRIVY AND HOW TO SCAN****************
+GO TO TRIVY OFFICIAL WEBSITE (Trivy.dev) AND INTALL TRIVY ON YOUR SERVER.
+COMMAND TO SCAN THE IMAGE IS:>>>>>>> trivy image imagename
+
+
+PRODUCTION DOCKER FILE FOR NODE.JS:
+```````````````````````````````````
+FROM node:22-apline
+
+
+
+
+
+
+
+
 
