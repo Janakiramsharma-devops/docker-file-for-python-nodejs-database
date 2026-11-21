@@ -12,4 +12,25 @@
 ```````````````````````````````````````````````````````````````````````
 
 
+PRODUCTION DOCKER FILE FOR NGINX:
+`````````````````````````````````
+FROM nginx:alpine
+RUN rm -rf /usr/local/nginx/html/*
+COPY index.html /usr/local/nginx/html/     //g\FIRST GET THE INDEX.HTML FILE INTO YOUR SERVER BEFORE WRITING THE DOCKER FILE
+EXPOSE 80
+RUN adduser -D janakiram
+RUN chnown -R janakiram:janakiram /usr/local/nginx/html
+USER janakiram
+CMD ["nginx", "-g", "daemon off;"]
+
+
+PRODUCTION DOCKER FILE FOR HTTPD:
+`````````````````````````````````
+FROM httpd:2.4-apline
+RUN rm -rf /usr/local/apache2/conf/httpd.conf/*
+COPY index.html /usr/local/apache2/conf/httpd.conf    //g\FIRST GET THE INDEX.HTML FILE INTO YOUR SERVER BEFORE WRITING THE DOCKER FILE
+EXPOSE 80
+RUN chown -R janakiram:janakiram /usr/local/apache2/conf/httpd.conf
+RUN adduser -D janakiram
+CMD ["httpd-foreground"]
 
